@@ -5,7 +5,7 @@ public class Alumno {
 	 * Guardará el nombre del alumno
 	 */
 
-	private String nombre = null;
+	private String nombre="";
 	/**
 	 * Guardará la nota media del alumno
 	 */

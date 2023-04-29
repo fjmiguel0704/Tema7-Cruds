@@ -49,7 +49,7 @@ public class Main {
 				for (int i = 0; i < alumnos.length; i++) {
 					// Comprobamos que el nombre del alumno sea distinto a null para imprimir el
 					// alumno
-					if (alumnos[i].getNombre() != null) {
+					if (!alumnos[i].getNombre().isEmpty()) {
 						System.out.println(alumnos[i].toString());
 					}
 				}
@@ -57,6 +57,7 @@ public class Main {
 
 			// En caso de 2, introduciremos un nuevo alumno
 			case 2:
+				int pos = 0;
 				// Pedimos el nombre del nuevo alumno
 				System.out.println("Introduce el nombre del alumno");
 				nombre = read.next();
@@ -74,12 +75,14 @@ public class Main {
 				// Recorremos el array
 				for (int i = 0; i < alumnos.length; i++) {
 					// Y comprobamos en que posición del array no se encuentra un alumno
-					if (alumnos[i].getNombre() == null) {
-						// Introducimos el nombre y nota media del alumno
-						alumnos[i].setNombre(nombre);
-						alumnos[i].setNotaMedia(notaMedia);
+					if (alumnos[i].getNombre().equals("")) {
+						pos=i;
 					}
 				}
+				
+				// Introducimos el nombre y nota media del alumno
+				alumnos[pos].setNombre(nombre);
+				alumnos[pos].setNotaMedia(notaMedia);
 				break;
 
 			// En caso de 3, modificamos a un alumno
@@ -101,6 +104,8 @@ public class Main {
 							notaMedia = read.nextDouble();
 						}
 					}
+					
+					alumnos[i].setNotaMedia(notaMedia);
 				}
 				break;
 
@@ -114,8 +119,8 @@ public class Main {
 				for (int i = 0; i < alumnos.length; i++) {
 					// Y comprobamos en que posición se encuentra el alumno con ese nombre
 					if (alumnos[i].getNombre().equals(nombre)) {
-						// Actualizamos el nombre del alumno a null
-						alumnos[i].setNombre(null);
+						// Actualizamos el nombre del alumno a vacío
+						alumnos[i].setNombre("");
 					}
 				}
 				break;
